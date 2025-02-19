@@ -21,14 +21,9 @@ if entree == "1":
 start = random.randint(0, 1)
 if entree == "0":
     joueur = ""
-    if start == 0 :
-        ia = Player(MAX)
-        joueur = "O"
-        print("Vous avez les ronds")
-    else:
-        ia = Player(MIN)
-        joueur="X"
-        print("Vous avez les croix")
+    ia = Player(MIN)
+    joueur="X"
+    print("Vous avez les croix")
 if(start == 0):
     print("Les croix commencent")
 else :
@@ -56,19 +51,18 @@ if(entree == "1"):
             input()
 if(entree == "0"):
     while len(state.empty_cell(n))>0 and not state.fin():
-        state.place(ia.turn(state,n),ia.player)
-        state.render()
-        if state.fin():
-            break
         x = input("entrez une ligne: ")
         y = input("entrez une colonne: ")
-        while(x>=n or x<0 or y>=n or y<0):
+        while(int(x)>=n or int(x)<0 or int(y)>=n or int(y)<0):
             x = input("entrez une ligne: ")
             y = input("entrez une colonne: ")
         state.place([int(x),int(y)],joueur)
         state.render()
         if state.fin():
             break
+        state.place(ia.turn(state,n),ia.player)
+        state.render()
+
 if state.quiWin()=="X":
     print("Les croix ont gagnées")
 elif state.quiWin()=="O":

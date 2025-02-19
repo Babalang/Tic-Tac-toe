@@ -222,6 +222,5 @@ class Grid:
         print(string)
 
     def place(self,coords,player):
-        print(coords,self.grid[coords[0]][coords[1]] )
         if self.grid[coords[0]][coords[1]] == 0 :
             self.grid[coords[0]][coords[1]] = player

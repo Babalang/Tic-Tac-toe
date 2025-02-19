@@ -38,6 +38,7 @@ class Player:
             if(n<m[0][i]):
                 k=i
                 n=m[0][i]
+        print(m)
         return [m[1][k][0],m[1][k][1]]
 
     def minmax4(self,state,taille,playerBase,playerActu,x,y):
@@ -59,10 +60,8 @@ class Player:
         listeWins=[]
         listeIndices=[]
         autrePlayer="X" if player=="O" else "O"
-        print("i")
         for i in range(taille):
             for j in range(taille):
-                print("i")
                 if(state.grid[i][j]==0):
                     state.grid[i][j]=player
                     listeWins.append(self.minmax4(state,taille,player,autrePlayer,i,j))
